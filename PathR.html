@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Right Path</title>
+    <link rel="stylesheet" href="Entire.css">
+    <style>
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url("bridge.webp");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        #bridgeResult {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="start.html">Start</a></li>
+            <li><a href="pathR.html" class="current">Middle</a></li>
+            <li><a href="sleptWell.html">End</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <h1>The Bridge</h1>
+        
+        <div class="scenario-text">
+            <p>You follow the right path and soon come to a deep ravine.</p>
+            <p>some planks are missing</p>
+            <h1>Are you gonna try it?</h1>
+        </div>
+        
+        <div class="choices-container">
+            <div id="bridgeChoice" class="choice-box">
+                <h2>Cross the Bridge</h2>
+                <p></p>
+            </div>
+        </div>
+        
+        <div id="bridgeResult" class="death-message">
+            <h2>you're too heavy!!!</h2>
+    
+            <p> Halfway across, the ropes snap and the bridge collapses beneath you.</p>
+            <p>You fall into a pit of hungry gators and drown.</p>
+            <a href="start.html" class="restart-btn">Try Again</a>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('bridgeChoice').addEventListener('click', function() {
+            document.getElementById('bridgeChoice').style.display = 'none';
+            document.getElementById('bridgeResult').style.display = 'block';
+            setTimeout(() => {
+                document.body.style.animation = "shake 0.5s";
+                setTimeout(() => {
+                    document.body.style.animation = "";
+                }, 500);
+            }, 300);
+        });
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0% { transform: translate(0, 0); }
+                10%, 30%, 50%, 70%, 90% { transform: translate(-5px, 0); }
+                20%, 40%, 60%, 80% { transform: translate(5px, 0); }
+                100% { transform: translate(0, 0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
